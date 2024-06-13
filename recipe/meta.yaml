@@ -1,0 +1,70 @@
+{% set name = "wdm" %}
+{% set version = "0.2.4" %}
+{% set commit_id = "5337860a9a77f147f3adebf4c93fe2ca74d5a028" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/tnagler/{{ name }}/archive/{{ commit_id }}.tar.gz
+  sha256: 2abb027c47fc580bee566c808f0db425df1fd91e9a890a84795ded2694120d5a
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+
+test:
+  requires:
+    - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+  source_files:
+    - test
+  commands:
+    # Headers tests - Unix 
+    - test -e $PREFIX/include/wdm.hpp               # [unix]
+    - test -e $PREFIX/include/wdm/bbeta.hpp         # [unix]
+    - test -e $PREFIX/include/wdm/eigen.hpp         # [unix]
+    - test -e $PREFIX/include/wdm/hoeffd.hpp        # [unix]
+    - test -e $PREFIX/include/wdm/ktau.hpp          # [unix]
+    - test -e $PREFIX/include/wdm/methods.hpp       # [unix]
+    - test -e $PREFIX/include/wdm/nan_handling.hpp  # [unix]
+    - test -e $PREFIX/include/wdm/prho.hpp          # [unix]
+    - test -e $PREFIX/include/wdm/ranks.hpp         # [unix]
+    - test -e $PREFIX/include/wdm/srho.hpp          # [unix]
+    - test -e $PREFIX/include/wdm/utils.hpp         # [unix]
+
+    # Headers tests - Windows    
+    - if not exist %PREFIX%\Library\include\wdm.hpp exit 1               # [win]
+    - if not exist %PREFIX%\Library\include\wdm\bbeta.hpp exit 1         # [win]
+    - if not exist %PREFIX%\Library\include\wdm\eigen.hpp exit 1         # [win]
+    - if not exist %PREFIX%\Library\include\wdm\hoeffd.hpp exit 1        # [win]
+    - if not exist %PREFIX%\Library\include\wdm\ktau.hpp exit 1          # [win]
+    - if not exist %PREFIX%\Library\include\wdm\methods.hpp exit 1       # [win]
+    - if not exist %PREFIX%\Library\include\wdm\nan_handling.hpp exit 1  # [win]
+    - if not exist %PREFIX%\Library\include\wdm\prho.hpp exit 1          # [win]
+    - if not exist %PREFIX%\Library\include\wdm\ranks.hpp exit 1         # [win]
+    - if not exist %PREFIX%\Library\include\wdm\srho.hpp exit 1          # [win]
+    - if not exist %PREFIX%\Library\include\wdm\utils.hpp exit 1         # [win]
+
+about:
+  home: https://github.com/tnagler/wdm
+  license: MIT
+  license_file: LICENSE
+  license_family: MIT
+  summary: |
+    A header-only C++ library for weighted dependence measures.
+  description: |
+    A header-only C++ library for weighted dependence measures
+  doc_url: https://tnagler.github.io/wdm
+  dev_url: https://github.com/tnagler/wdm
+
+extra:
+  recipe-maintainers:
+    - lorepirri
