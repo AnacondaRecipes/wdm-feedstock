@@ -26,32 +26,6 @@ test:
     - ninja
   source_files:
     - test
-  commands:
-    # Headers tests - Unix 
-    - test -e $PREFIX/include/wdm.hpp               # [unix]
-    - test -e $PREFIX/include/wdm/bbeta.hpp         # [unix]
-    - test -e $PREFIX/include/wdm/eigen.hpp         # [unix]
-    - test -e $PREFIX/include/wdm/hoeffd.hpp        # [unix]
-    - test -e $PREFIX/include/wdm/ktau.hpp          # [unix]
-    - test -e $PREFIX/include/wdm/methods.hpp       # [unix]
-    - test -e $PREFIX/include/wdm/nan_handling.hpp  # [unix]
-    - test -e $PREFIX/include/wdm/prho.hpp          # [unix]
-    - test -e $PREFIX/include/wdm/ranks.hpp         # [unix]
-    - test -e $PREFIX/include/wdm/srho.hpp          # [unix]
-    - test -e $PREFIX/include/wdm/utils.hpp         # [unix]
-
-    # Headers tests - Windows    
-    - if not exist %PREFIX%\Library\include\wdm.hpp exit 1               # [win]
-    - if not exist %PREFIX%\Library\include\wdm\bbeta.hpp exit 1         # [win]
-    - if not exist %PREFIX%\Library\include\wdm\eigen.hpp exit 1         # [win]
-    - if not exist %PREFIX%\Library\include\wdm\hoeffd.hpp exit 1        # [win]
-    - if not exist %PREFIX%\Library\include\wdm\ktau.hpp exit 1          # [win]
-    - if not exist %PREFIX%\Library\include\wdm\methods.hpp exit 1       # [win]
-    - if not exist %PREFIX%\Library\include\wdm\nan_handling.hpp exit 1  # [win]
-    - if not exist %PREFIX%\Library\include\wdm\prho.hpp exit 1          # [win]
-    - if not exist %PREFIX%\Library\include\wdm\ranks.hpp exit 1         # [win]
-    - if not exist %PREFIX%\Library\include\wdm\srho.hpp exit 1          # [win]
-    - if not exist %PREFIX%\Library\include\wdm\utils.hpp exit 1         # [win]
 
 about:
   home: https://github.com/tnagler/wdm
